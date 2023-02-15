@@ -1,0 +1,45 @@
+<div class = "form-empleados">
+    <form  #registerForm="ngForm">
+        <div class = "row">
+            <div class = "col-md-12">
+                <div class = "text-center">
+                    <h1>Ingreso de empleados</h1>
+                </div>                        
+                <hr/>
+            </div>
+        </div>
+        <div class = "row"> 
+            <div class = "col-md-12">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text"id="nombre" class="form-control" [(ngModel)]="formData.nombreModel" name = "nombre"  placeholder="Nombre" #nombre="ngModel"
+                    required >
+                </div>
+                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                    <div *ngIf="nombre.errors?.['required']">
+                    Nombre es requerido
+                    </div>
+                </div>
+            </div>
+        </div>   
+        <div class = "row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text"id="apellido" class="form-control" [(ngModel)]="formData.apellidoModel" name = "apellido"  placeholder="Apellido" #apellido="ngModel" required >
+                </div>
+                <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="alert alert-danger">
+                    <div *ngIf="apellido.errors?.['required']">
+                        Apellido es requerido
+                    </div>
+                </div>
+            </div>
+        </div>    
+    
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" [disabled]="!formData.nombreModel || !formData.apellidoModel" class="btn btn-outline-primary" (click)="verificarEmpleado()">Crear empleados</button>
+            </div>
+        </div>
+    </form>
+</div>

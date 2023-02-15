@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'first-angular-app';
+  title = 'First Angular App';
+  // login = JSON.parse(localStorage.getItem('currentUser'));
+  login = JSON.parse(localStorage.getItem('currentUser') || 'false');
+
+  constructor(public router: Router){
+  }
+
+  getName(): void{
+
+  }
+
+  ngOnInit():void{
+    if (this.login == false) {
+      this.login = true;
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/principal']);
+    }
+  }
 }

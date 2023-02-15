@@ -1,0 +1,44 @@
+<app-header-principal></app-header-principal>
+
+    <div class = "container-fluid">
+        <div class = "row">
+            <div class = "col-md-2">
+                <br/>
+                <button type="button" class="btn btn-outline-primary" (click)="crearEmpleados('creacionEmpleado')">Crear empleados</button>
+                <br/><br/>
+                <button type="button" class="btn btn-outline-primary" (click)="crearEmpleados('listaEmpleado')">Listar empleados</button>
+            </div>
+            <div class = "col-md-9">
+                
+                <div *ngIf="isShown==''" class="row">
+                    <div class="col-md-12">
+                        <div class = "administrative-pannel">
+                            <div class="jumbotron">
+                                <div class = "text-center">
+                                    <h1 class="display-4">Por favor primero seleccione una opción</h1>
+                                    <p class="lead">Acá estárá el contenido relacionado a todos los empleados creados para esta prueba.</p>
+                                    <hr class="my-4">
+                                    <p>Emplados de prueba para ejercicio administrativo.</p>
+                                    <p class="lead">
+                                </div>
+                            </div>
+                        </div>         
+                    </div>
+                </div>
+
+                <app-listas [coleccionEmpleados]="participanteData" *ngIf="isShown=='creacionEmpleado'"></app-listas>                                                    
+                <app-listado-empleados [participanteData]="participanteData" *ngIf="isShown=='listaEmpleado'"></app-listado-empleados>
+                
+                                
+            </div>
+            <div class = "col-md-1"></div>
+        </div>
+    </div>
+
+<div class = "d-none">
+    <ul *ngFor="let service of serviceObject; let i = index">
+        <li >
+            {{i}} {{service.title}}
+        </li>
+    </ul>
+</div>
