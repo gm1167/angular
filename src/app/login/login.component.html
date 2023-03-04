@@ -37,7 +37,6 @@
 
           <!-- Submit button -->
           <button type="button" class="btn btn-primary btn-block mb-4" (click)='verficacionPass()'>Iniciar sesión</button>
-
           <!-- <div id="validacionModal" class="modal" data-toggle="modal" tabindex="-1" role="dialog" [ngClass] = "[estadoVisible === 'visible' ? 'fadeIn': 'fadeOut']"> -->
           <div #modalValidacionLogin id="validacionModal" class="modal fade" data-toggle="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -47,7 +46,12 @@
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)= "cerrarModal()">&times;</button>
                 </div>
                 <div class="modal-body">
-                  <p>La contraseña ingresada es incorrecta, por favor validarla nuevamente.</p>
+                  <div *ngIf="credencialVacia">
+                    Por favor ingrese una contraseña.
+                  </div>
+                  <div *ngIf="!credencialVacia">
+                    La contraseña ingresada es incorrecta.
+                  </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal" (click)= "cerrarModal()">Aceptar</button>

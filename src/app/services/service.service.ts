@@ -10,12 +10,12 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class DataService {
 
-  private REST_API_SERVER = "https://jsonplaceholder.typicode.com/posts";  
+  private REST_API_SERVER = "https://jsonplaceholder.typicode.com/posts";
 
   constructor(private httpClient: HttpClient) { }
 
   handleError(error: HttpErrorResponse) {
-    let errorMessage = 'Unknown error!';
+    let errorMessage = 'Error desconocido!';
     if (error.error instanceof ErrorEvent) {
       // Client-side errors
       errorMessage = `Error: ${error.error.message}`;
@@ -28,7 +28,6 @@ export class DataService {
   }
 
   sendGetRequest(){
-
     return new Promise<any>((resolve, reject) => {
     this.httpClient.get<any>(this.REST_API_SERVER).subscribe(data => {
         resolve(data);
